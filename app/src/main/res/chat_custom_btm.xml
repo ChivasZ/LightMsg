@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lightmsg.activity.msg.chat.EmojiRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chat_btm_rl"
+    style="@style/ChatBottomAreaIn" >
+
+    <RelativeLayout
+        android:id="@+id/rl_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null" >
+
+        <ImageButton
+            android:id="@+id/btn_emo"
+            android:layout_width="35dip"
+            android:layout_height="35dip"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dip"
+            android:background="@drawable/chat_emoj_btn_normal" />
+        <FrameLayout 
+            android:id="@+id/btn_right"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="2dp">
+            <Button
+                android:id="@+id/btn_send"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:background="@drawable/sendbtn_normal"
+                android:visibility="invisible"
+                android:text="@string/send" />
+            <ImageButton
+                android:id="@+id/btn_more"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:background="@drawable/chat_btm_more_btn_selector"
+                android:text="@string/more" />
+        </FrameLayout>
+        <EditText
+            android:id="@+id/et_sendmessage"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_toLeftOf="@id/btn_right"
+            android:layout_toRightOf="@id/btn_emo"
+            android:background="@drawable/chat_edit_normal"
+            android:inputType="text"
+            android:imeOptions="actionSend"
+            android:singleLine="true"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_emojichoose"
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        android:layout_below="@id/rl_input"
+        android:visibility="gone" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_contains"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dip" >
+        </android.support.v4.view.ViewPager>
+
+        <LinearLayout
+            android:id="@+id/iv_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="6dip"
+            android:gravity="center"
+            android:orientation="horizontal" >
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_more_operations"
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        android:layout_below="@id/rl_input"
+        android:visibility="gone" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_contains2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dip" >
+        </android.support.v4.view.ViewPager>
+
+        <LinearLayout
+            android:id="@+id/iv_image2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="6dip"
+            android:gravity="center"
+            android:orientation="horizontal" >
+        </LinearLayout>
+    </RelativeLayout>
+</com.lightmsg.activity.msg.chat.EmojiRelativeLayout>

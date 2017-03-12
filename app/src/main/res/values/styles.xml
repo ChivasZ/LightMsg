@@ -1,0 +1,256 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- NEW STYLE START -->
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- <style name="AppTheme" parent="Theme.DeviceDefault"> -->
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.LightMsgActivity">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+    
+    <style name="AppTheme.ChatThread">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:layout_gravity">top</item>
+        <item name="android:gravity">top</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="AppTheme.OptionDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!--<item name="windowMinWidthMajor">@dimen/abc_dialog_min_width_major</item>
+        <item name="windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
+        <item name="android:windowMinWidthMajor" type="dimen">35%</item>
+        <item name="android:windowMinWidthMinor" type="dimen">55%</item>-->
+    </style>
+    <!-- NEW STYLE END -->
+
+    <!-- OLD STYLE START -->
+    <!-- Application theme. -->
+    <style name="AppThemeOld" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/myActionBar</item>
+        <item name="android:actionOverflowButtonStyle">@style/overFlow</item>
+    </style>
+
+    <style name="myActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <!-- <item name="android:background">#E4CE76</item> -->
+        <item name="android:background">#222222</item>
+        <item name="android:titleTextStyle">@style/titleStyle</item>
+    </style>
+    <!-- OLD STYLE END -->
+
+    <style name="TabhostTheme">
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="titleStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="overFlow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="android:src">@drawable/more</item>
+    </style>
+
+    <style name="back">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:src">@drawable/back</item>
+    </style>
+
+    <style name="accountSetupSoftButtonLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/winset_singleline_list_layout_minHeight</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="accountSetupSoftButton2Style">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">48dip</item>
+        <item name="android:layout_marginTop">4dip</item>
+        <item name="android:layout_marginBottom">5dip</item>
+        <item name="android:layout_marginLeft">4dip</item>
+        <item name="android:layout_marginRight">4dip</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_weight">.5</item>
+    </style>
+
+    <style name="lineDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/gray</item>
+    </style>
+
+    <style name="accountSetupListDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/gainsboro</item>
+    </style>
+
+    <style name="accountSetupButtonCheckBoxStyleForLeft">
+        <item name="android:layout_width">30dip</item>
+        <item name="android:layout_height">30dip</item>
+        <item name="android:layout_marginTop">13dip</item>
+        <item name="android:layout_marginBottom">13dip</item>
+        <item name="android:layout_marginLeft">12dip</item>
+        <item name="android:layout_marginRight">11dip</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="accountSetup2LineTextStyleForLeft">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">48dip</item>
+        <item name="android:layout_marginRight">12dip</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:textColor">#D7D7D7</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="accountSetupInfoText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/papayawhip</item>
+    </style>
+
+    <style name="accountSetupEditFieldStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">36dip</item>
+        <item name="android:layout_marginLeft">12dip</item>
+        <item name="android:layout_marginRight">12dip</item>
+        <item name="android:textSize">@dimen/setup_basics_edit_text_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="TabsTopBlack">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="fish_bottom_radio">
+        <!-- 内部组件的排列 -->
+        <item name="android:gravity">center</item>
+        <!-- 高度 -->
+        <item name="android:layout_height">wrap_content</item>
+        <!-- 宽度 -->
+        <item name="android:layout_width">wrap_content</item>
+        <!-- 设置RadioButton的原来图片为空 -->
+        <item name="android:button">@null</item>
+        <!-- 与其他组件宽度占相同比重 -->
+        <item name="android:layout_weight">1.0</item>
+        <!-- 底部的空隙 -->
+        <item name="android:paddingBottom">2.0dip</item>
+        <!-- 顶部的空隙 -->
+        <item name="android:paddingTop">2.0dip</item>
+        <!-- 文字的大小 -->
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="tab_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">65dp</item>
+    </style>
+
+    <style name="tab_item_iv_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">36dp</item>
+    </style>
+
+    <style name="tab_item_tv_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="dot_style">
+        <item name="android:layout_width">5dip</item>
+        <item name="android:layout_height">5dip</item>
+        <item name="android:background">@drawable/dot_normal</item>
+        <item name="android:layout_marginLeft">1.5dip</item>
+        <item name="android:layout_marginRight">1.5dip</item>
+    </style>
+
+    <style name="ChatMsg">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/chat_btm_send_edittext_textsize</item>
+    </style>
+
+    <style name="ChatName">
+        <item name="android:textColor">@color/deepskyblue</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="ChatDate">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/chat_list_date_bg</item>
+    </style>
+
+    <style name="BackButton" parent="@android:style/Widget.ImageButton">
+        <item name="android:layout_width">30dip</item>
+        <item name="android:layout_height">30dip</item>
+        <item name="android:background">@drawable/btn_default_holo_dark</item>
+    </style>
+
+    <style name="ChatBottomArea">
+        <item name="android:background">@drawable/btn_default_disabled_focused_holo_dark</item>
+    </style>
+
+    <style name="ChatBottomAreaIn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">2dip</item>
+        <item name="android:paddingBottom">2dip</item>
+    </style>
+
+    <style name="Theme.GalleryBase" parent="android:Theme.Holo">
+        <!-- <item name="listPreferredItemHeightSmall">48dp</item> -->
+        <!-- <item name="switchStyle">@android:style/Widget.CompoundButton</item> -->
+    </style>
+
+    <style name="Holo.ActionBar" parent="android:Widget.Holo.ActionBar">
+        <item name="android:displayOptions">useLogo|showHome</item>
+        <item name="android:background">@drawable/actionbar_translucent</item>
+        <item name="android:backgroundStacked">@null</item>
+    </style>
+
+    <style name="Theme.Crop" parent="Theme.GalleryBase">
+        <item name="android:displayOptions"></item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:actionBarStyle">@style/Holo.ActionBar</item>
+        <item name="android:colorBackground">@null</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowBackground">@drawable/filtershow_tiled_background</item>
+    </style>
+</resources>

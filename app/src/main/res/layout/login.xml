@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2008 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!-- Small-screen holder - see layout-xlarge for large-screen version -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/login"
+    android:orientation="vertical" >
+    <!-- android:background="@drawable/bg" -->
+    
+    <LinearLayout
+	      android:id="@+id/login_top"
+	      android:layout_width="match_parent"
+	      android:layout_height="wrap_content"
+	      android:orientation="vertical" >
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <!-- Frame on the left containing the (common) setup info -->
+        <!-- TODO need phone-sized UX here -->
+
+        <FrameLayout
+            android:id="@+id/login_common_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true" >
+
+            <include layout="@layout/login_common" />
+        </FrameLayout>
+
+        <!-- Buttons below -->
+        <View
+             android:layout_width="match_parent"
+             android:layout_height="0dip"
+             android:layout_weight="1" />
+
+        <View style="@style/accountSetupListDivider" />
+        <LinearLayout style="@style/accountSetupSoftButtonLayoutStyle" >
+
+            <Button
+                android:id="@+id/btnJumpReg"
+                style="@style/accountSetupSoftButton2Style"
+                android:layout_marginRight="0dip"
+                android:text="@string/goto_register" />
+            
+            <Button
+                android:id="@+id/btnLogin"
+                style="@style/accountSetupSoftButton2Style"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="0dip"
+                android:text="@string/login" />
+
+        </LinearLayout>
+     </LinearLayout>
+     </ScrollView>
+</LinearLayout>

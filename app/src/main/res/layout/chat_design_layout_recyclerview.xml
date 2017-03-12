@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.lightmsg.activity.msgdesign.chat.ChatThread">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            apps:contentScrim="?attr/colorPrimary"
+            apps:popupTheme="@style/AppTheme.PopupOverlay"
+            apps:navigationIcon="?attr/homeAsUpIndicator">
+
+            <ImageView
+                android:id="@+id/hint"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:src="@drawable/hint_ball"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        apps:layout_behavior="@string/appbar_scrolling_view_behavior" >
+
+        <include layout="@layout/chat_design_layout_content"/>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

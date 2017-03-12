@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fish_bottom_tab"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/bottombar_bg"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            style="@style/fish_bottom_radio"
+            android:drawableTop="@drawable/fish_bottom_1"
+            android:text="渔场" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            style="@style/fish_bottom_radio"
+            android:drawableTop="@drawable/fish_bottom_2"
+            android:text="地图" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            style="@style/fish_bottom_radio"
+            android:drawableTop="@drawable/fish_bottom_3"
+            android:text="商城" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            style="@style/fish_bottom_radio"
+            android:drawableTop="@drawable/fish_bottom_4"
+            android:gravity="center"
+            android:text="其他" />
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/fish_bottom_tab" />
+
+</RelativeLayout>

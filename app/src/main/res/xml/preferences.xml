@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <CheckBoxPreference
+                 android:key="pref_sync"
+                 android:title="CheckBoxPreference"
+                 android:summary="CheckBoxPreferenceSummary"
+                 android:defaultValue="true" />
+    <Preference
+                 android:key="pref_sync"
+                 android:title="CheckBoxPreference"
+                 android:summary="CheckBoxPreferenceSummary"
+                 android:dependency="pref_sync" />
+    <ListPreference
+                 android:dependency="pref_sync"
+                 android:key="pref_syncConnectionType"
+                 android:title="ListPreference"
+                 android:dialogTitle="TEST?"
+                 android:entries="@array/test_entries"
+                 android:entryValues="@array/test_values"
+                 android:defaultValue="V2" />
+    <PreferenceCategory
+        android:title="Test2"
+        android:key="pref_test2">
+        <CheckBoxPreference
+                 android:key="pref_t1"
+                 android:title="t1"
+                 android:summary="1"
+                 android:defaultValue="false" />
+        <Preference
+                 android:key="pref_t2"
+                 android:title="t2"
+                 android:summary="2" />
+        <Preference
+                 android:key="pref_t3"
+                 android:title="t3"
+                 android:summary="3" />
+    </PreferenceCategory>
+        
+
+</PreferenceScreen>

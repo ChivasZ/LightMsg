@@ -1,0 +1,135 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etPassword"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:hint="@string/username"
+        android:drawableLeft="@drawable/attach_map"
+        android:imeOptions="flagNoFullscreen"
+        android:inputType="text"
+        android:drawablePadding="10dp"
+        android:nextFocusDown="@+id/etPassword" >
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etUsername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:hint="@string/password"
+        android:imeOptions="actionDone|flagNoFullscreen"
+        android:inputType="textPassword"
+        android:drawableLeft="@drawable/attach_map"
+        android:drawablePadding="10dp" />
+
+    <LinearLayout
+        android:id="@+id/login_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etPassword"
+        android:layout_below="@+id/etPassword"
+        android:orientation="vertical" >
+
+        <!-- View style="@style/accountSetupListDivider" /-->
+        <LinearLayout
+            android:id="@+id/rmb_pwd_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" 
+            android:clickable="true"
+            android:focusable="true" >
+
+            <CheckBox
+                android:id="@+id/remember_password"
+                style="@style/accountSetupButtonCheckBoxStyleForLeft"
+                android:duplicateParentState="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="@string/remember_password"
+                android:checked="true" />
+
+            <TextView
+                android:id="@+id/remember_password_hint"
+                style="@style/accountSetup2LineTextStyleForLeft"
+                android:duplicateParentState="true"
+                android:text="@string/remember_password" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/auto_login_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" 
+            android:clickable="true"
+            android:focusable="true" >
+
+            <CheckBox
+                android:id="@+id/auto_login"
+                style="@style/accountSetupButtonCheckBoxStyleForLeft"
+                android:duplicateParentState="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="@string/auto_login"
+                android:checked="false"
+                android:nextFocusDown="@+id/ivLogin" />
+            <TextView
+                android:id="@+id/auto_login_hint"
+                style="@style/accountSetup2LineTextStyleForLeft"
+                android:duplicateParentState="true"
+                android:text="@string/auto_login" />
+        </LinearLayout>
+
+        <!-- View style="@style/accountSetupListDivider" /-->
+    </LinearLayout>
+    
+    <View 
+        android:id="@+id/divider"
+        style="@style/accountSetupListDivider"
+        android:layout_below="@+id/login_options"/>
+    
+    <CheckedTextView
+        android:id="@+id/tvSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="26dp"
+        android:layout_marginLeft="20dp"
+        android:text="Sign up"
+        android:textColor="#A3A095"
+        android:textSize="20sp" />
+
+    <CheckedTextView
+        android:id="@+id/tvForgetPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvSignUp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="18dp"
+        android:text="Forget password?"
+        android:textColor="#A3A095"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/ivLogin"
+        android:layout_width="240dp"
+        android:layout_height="42dp"
+        android:layout_alignLeft="@+id/etPassword"
+        android:layout_below="@+id/divider"
+        android:layout_marginTop="44dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/login_button" />
+
+</RelativeLayout>

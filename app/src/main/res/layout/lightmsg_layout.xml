@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tabhost1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <View
+            android:id="@+id/divider_above_tabs"
+            android:layout_above="@android:id/tabs"
+            style="@style/accountSetupListDivider" />
+        
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/divider_above_tabs">
+            
+            <fragment android:name="com.lightmsg.activity.msg.conv.ConverFragment"
+                android:id="@+id/tab1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            
+            <fragment android:name="com.lightmsg.activity.msg.rost.RosterPyFragment"
+                android:id="@+id/tab2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            
+            <fragment android:name="com.lightmsg.activity.msg.chat.ChatFragment"
+                android:id="@+id/tab3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            
+            <fragment android:name="com.lightmsg.activity.msg.prof.PersonalFragment"
+                android:id="@+id/tab4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </FrameLayout>
+        
+        <TabWidget
+            android:id="@android:id/tabs"
+            style="@style/tab_style"
+            android:layout_alignParentBottom="true" >
+        </TabWidget>
+    </RelativeLayout>
+
+</TabHost>

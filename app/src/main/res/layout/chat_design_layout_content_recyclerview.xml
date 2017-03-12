@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="@color/lightgray" >
+	
+    <android.support.v7.widget.RecyclerView
+    	android:id="@+id/recyclerview"
+    	android:layout_width="match_parent"
+    	android:layout_height="0dp"
+        android:layout_weight="1"
+    	android:layout_marginLeft="2dp" 
+		android:layout_marginRight="2dp"
+    	android:divider="@null"
+    	android:dividerHeight="5dp"
+    	android:scrollbars="none"
+    	android:cacheColorHint="#00000000"
+    	android:overScrollMode="ifContentScrolls" />
+
+    <View style="@style/lineDivider" />
+	<LinearLayout
+		android:id="@+id/bottom"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+        android:background="@color/white">
+		<!-- style="@style/ChatBottomArea" -->
+		<include
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			layout="@layout/chat_design_layout_custom_footer" />
+	</LinearLayout>
+
+</LinearLayout>

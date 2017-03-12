@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/lightgray" >
+    
+    <RelativeLayout 
+        android:id="@+id/rl_portrait"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:background="@drawable/personal_list_item_selector" >
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Portrait"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            />
+        
+        <ImageView
+            android:id="@+id/portrait"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/mime_detail_ic_images"
+            />
+    </RelativeLayout>
+    
+    <FrameLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@color/white">
+        <View style="@style/accountSetupListDivider"/>
+    </FrameLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/rl_nick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:focusable="true"
+        android:background="@drawable/personal_list_item_selector" >
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Nick"
+            android:layout_alignParentLeft="true"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            />
+        
+        <TextView 
+            android:id="@+id/nick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="清华"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/gray"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            />
+    </RelativeLayout>
+    
+    <FrameLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@color/white">
+        <View style="@style/accountSetupListDivider"/>
+    </FrameLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/rl_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:focusable="true"
+        android:background="@drawable/personal_list_item_selector" >
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Account"
+            android:layout_alignParentLeft="true"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            />
+        
+        <TextView 
+            android:id="@+id/account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="zhqh"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/gray"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            />
+    </RelativeLayout>
+    
+    <FrameLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@color/white">
+        <View style="@style/accountSetupListDivider"/>
+    </FrameLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/rl_gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:focusable="true"
+        android:background="@drawable/personal_list_item_selector" >
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Gender"
+            android:layout_alignParentLeft="true"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            />
+        
+        <TextView 
+            android:id="@+id/gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="男"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/gray"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

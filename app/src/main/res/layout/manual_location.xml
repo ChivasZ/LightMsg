@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <RelativeLayout
+        android:id="@+id/popular" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/titlebar_bg_nor_greydark" >
+        <TextView
+            android:id="@+id/name" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pls_locate_manually"
+            android:layout_centerInParent="true"
+            android:textSize="18sp" 
+            android:textColor="#ffffff" />
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true" >
+        
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_province"
+        android:layout_below="@id/popular"
+        android:layout_above="@id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="2dp" 
+        android:layout_marginRight="2dp"
+        android:dividerHeight="2dp"
+        android:scrollbars="none"
+        android:cacheColorHint="#00000000"
+        />
+    <!-- android:divider="@null"  -->
+</RelativeLayout>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2008 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+
+<!-- Small-screen holder - see layout-xlarge for large-screen version -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/account_register_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/common"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/instructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dip"
+            android:layout_marginLeft="12dip"
+            android:layout_marginRight="12dip"
+            android:layout_marginTop="13dip"
+            android:text="@string/accounts_welcome"
+            android:textAppearance="@style/accountSetupInfoText"
+            android:textColor="#b7b7b7"
+            android:textSize="@dimen/setup_basics_instructions_text_size" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dip"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/account_old_password"
+                style="@style/accountSetupEditFieldStyle"
+                android:layout_weight="1"
+                android:hint="Old password"
+                android:imeOptions="flagNoFullscreen"
+                android:inputType="textPassword"
+                android:maxLength="320"
+                android:nextFocusDown="@+id/account_new_name" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/account_new_password"
+            style="@style/accountSetupEditFieldStyle"
+            android:layout_marginBottom="8dip"
+            android:layout_marginTop="8dip"
+            android:hint="New password"
+            android:imeOptions="actionDone|flagNoFullscreen"
+            android:inputType="textPassword"
+            android:maxLength="320" />
+
+        <EditText
+            android:id="@+id/account_new_password2"
+            style="@style/accountSetupEditFieldStyle"
+            android:layout_marginBottom="8dip"
+            android:layout_marginTop="8dip"
+            android:hint="New password again"
+            android:imeOptions="actionDone|flagNoFullscreen"
+            android:inputType="textPassword"
+            android:maxLength="320" />
+
+        <EditText
+            android:id="@+id/account_new_name"
+            style="@style/accountSetupEditFieldStyle"
+            android:layout_marginBottom="8dip"
+            android:layout_marginTop="8dip"
+            android:hint="Account name"
+            android:imeOptions="flagNoFullscreen"
+            android:inputType="text"
+            android:maxLength="320" />
+
+        <EditText
+            android:id="@+id/account_new_email"
+            style="@style/accountSetupEditFieldStyle"
+            android:layout_marginBottom="8dip"
+            android:layout_marginTop="8dip"
+            android:hint="Email"
+            android:imeOptions="flagNoFullscreen"
+            android:inputType="text"
+            android:maxLength="320" />
+
+        <ImageView
+            android:id="@+id/account_new_portrait"
+            style="@style/accountSetupEditFieldStyle"
+            android:layout_marginBottom="8dip"
+            android:layout_marginTop="8dip"
+            android:hint="Portrait"
+            android:imeOptions="flagNoFullscreen"
+            android:inputType="text"
+            android:maxLength="320" />
+
+        <EditText
+            android:id="@+id/account_new_portrait_path"
+            style="@style/accountSetupEditFieldStyle"
+            android:layout_marginBottom="8dip"
+            android:layout_marginTop="8dip"
+            android:hint="Portrait path"
+            android:imeOptions="flagNoFullscreen"
+            android:inputType="text"
+            android:maxLength="320" />
+
+        <View style="@style/accountSetupListDivider" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1" />
+
+        <View style="@style/accountSetupListDivider" />
+
+        <LinearLayout style="@style/accountSetupSoftButtonLayoutStyle" >
+
+            <Button
+                android:id="@+id/btnCancel"
+                style="@style/accountSetupSoftButton2Style"
+                android:layout_marginRight="0dip"
+                android:text="@string/cancel" />
+
+            <Button
+                android:id="@+id/btnProfiles"
+                style="@style/accountSetupSoftButton2Style"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="0dip"
+                android:text="@string/set" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

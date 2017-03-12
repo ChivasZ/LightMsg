@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/lightgray" >
+    
+    <LinearLayout 
+        android:id="@+id/personal_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:focusable="true"
+        android:background="@drawable/item_background_settings">
+        <!--android:background="@drawable/personal_list_item_selector" >-->
+        
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp" 
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/mime_detail_ic_images"
+            />
+        <LinearLayout 
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:gravity="left"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+            
+            <TextView 
+                android:id="@+id/nick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:text="TEST"
+                android:gravity="bottom|left"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"/>
+            <TextView 
+                android:id="@+id/account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/gray"
+                android:text="test@test.test"
+                android:gravity="top|left"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"/>
+        </LinearLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:gravity="left"
+        android:focusable="true"
+        android:background="@drawable/item_background_settings">
+        <!--android:background="@drawable/personal_list_item_selector" >-->
+        
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/mime_detail_ic_contact"
+            />
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Settings"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical|left"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_gravity="bottom"
+        android:focusable="true">
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="38dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Log out"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:background="@drawable/item_background_quitbutton"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lightmsg.activity.msg.rost.RosterListItem xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/roster_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:id="@+id/item_header_parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/roster_py_list_header_height"
+        android:background="@color/roster_py_list_header_color"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/item_header_text"
+            android:layout_width="40dp"
+            android:layout_height="@dimen/roster_py_list_header_height"
+            android:layout_gravity="top"
+            android:gravity="center"
+            android:textColor="@color/roster_py_list_header_text_color"
+            android:textSize="@dimen/roster_py_list_header_textsize" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:baselineAligned="false" >
+
+            <LinearLayout 
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:orientation="vertical"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_gravity="center_vertical">
+                <ImageView 
+                    android:id="@+id/roster_portrait"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:contentDescription="Header"/>
+            </LinearLayout>
+            
+            <!-- <View style="@style/rosterListDivider" /> -->
+            
+            <LinearLayout 
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp">
+                <TextView 
+                    android:id="@+id/roster_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="null"
+                    android:textColor="@color/black"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"/>
+                <TextView 
+                    android:id="@+id/roster_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:textColor="@color/gray"/>
+            </LinearLayout>
+            
+            <LinearLayout 
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp">
+                <TextView 
+                    android:id="@+id/roster_show"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical|right"
+                    android:textColor="@color/gray"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"/>
+                <TextView 
+                    android:id="@+id/roster_presence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:textColor="@color/gray"/>
+            </LinearLayout>
+    </LinearLayout>
+    
+</com.lightmsg.activity.msg.rost.RosterListItem>

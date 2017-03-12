@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_package_name">com.lightmsg</string>
+    <string name="app_badge_class">com.lightmsg.activity.Welcome</string>
+    <string name="app_name">Light MSG</string>
+    <string name="remember_password">Remember password</string>
+    <string name="auto_login">Auto login</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="username">User name</string>
+    <string name="password">Password</string>
+
+    <string name="tab1">Messages</string>
+    <string name="tab2">Friends</string>
+    <string name="tab3">Scope</string>
+    <string name="tab4">Me</string>
+
+    <string name="tab_msg">Messages</string>
+    <string name="tab_address">Contacts</string>
+    <string name="tab_scope">Find</string>
+    <string name="tab_me">Me</string>
+
+    <string name="menu_home">首页</string>
+    <string name="menu_brand">分类</string>
+    <string name="menu_shopping_cart">购物车</string>
+    <string name="menu_my_letao">乐淘</string>
+    <string name="menu_more">更多</string>
+
+    <string name="accounts_welcome">Welcome to register Smart Community account!</string>
+    <string name="account_register_username_hint">Account ID (Unique for login)</string>
+    <string name="account_register_name_hint">Account name</string>
+    <string name="account_register_password_hint">Password</string>
+    <string name="account_register_should_not_empty">Register failed.\r\nAccount Id/Name/Password should not empty</string>
+    <string name="account_register_username_format">Register failed.\r\nUser name should be digital and letters, starts with letters.</string>
+    <string name="account_register_password_format">Register failed.\r\nPassword should be digital or letters, not less than 6 digit.</string>
+
+    <string name="account_register_show_password">Show password</string>
+    <string name="dot">.</string>
+    <string name="cancel">Cancel</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="set">Setting</string>
+    <string name="goto_login">Login</string>
+    <string name="goto_register">Register</string>
+    <string name="login_hint">To Login Smart Community...</string>
+
+    <string name="waiting">Wait, please...</string>
+    <string name="logging_in">Logging in...</string>
+
+    <string name="registerOK">Register successfully! \r\nYou can login by the new account now.Login now?</string>
+    <string name="connect_failed">Connect failed, please check network status.</string>
+    <string name="register_failed">Register failed.</string>
+    <string name="register_failed_already_exist">The user name already exists.</string>
+
+    <string name="login_failed">Login failed</string>
+    <string name="login_failed_network">Login failed.\r\nPlease check network status.</string>
+    <string name="login_failed_timeout">Login failed.\r\nTime out, please try again.</string>
+    <string name="login_failed_null">Login failed.\r\nUser name and password should not be null.</string>
+    <string name="login_failed_username_format">Login failed.\r\nUser name should be digital and letters, starts with letters.</string>
+    <string name="login_failed_password_format">Login failed.\r\nPassword should be digital or letters, not less than 6 digit.</string>
+
+
+    <string name="nul">Null</string>
+    <string name="low_memory">Low memory!!!</string>
+    <string name="noti_content_title">Recent Message (%1$d unread)</string>
+    <!-- <string name="noti_content_title">最近通知 (%1$d条未读)</string> -->
+    <string name="no_msg">No message</string>
+    <string name="send">Send</string>
+    <string name="more">More..</string>
+    <string name="fetching_roster">Fetching roster list...</string>
+
+    <string name="menu_add_friends">Add friend</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_ask_us">Ask us</string>
+
+    <string name="save">Save</string>
+    <string name="select_image">Select photo</string>
+    <!--  String shown when we cannot load the image when starting the activity [CHAR LIMIT=NONE] -->
+    <string name="cannot_load_image">Cannot load the image!</string>
+    <!--  String displayed when setting the homepage wallpaper in the background [CHAR LIMIT=NONE] -->
+    <string name="setting_wallpaper">Setting wallpaper</string>
+
+    <!--  Label for the image crop effect [CHAR LIMIT=15] -->
+    <string name="crop" msgid="5584000454518174632">Crop</string>
+    <!-- menu pick: crop the currently selected image [CHAR LIMIT=30]-->
+    <string name="crop_label">Crop picture</string>
+
+    <string name="locating">Locating</string>
+    <string name="pls_locate_manually">Select your province manually, please!</string>
+    <string name="quit_manual_locate">Select your province to quit!</string>
+
+    <string name="discussion_group">Discuz</string>
+    <string name="latest_msg_date">Recent message</string>
+
+    <!-- button indicating that the cropped image should be saved -->
+    <string name="crop_save_text">Save</string>
+    <!-- button indicating that the cropped image should be reverted back to the original -->
+    <string name="crop_discard_text">Discard</string>
+
+    <!-- Hint that appears when cropping an image with more than one face -->
+    <string name="multiface_crop_help">Touch a face to begin.</string>
+    <!-- Toast/alert that the face detection is being run -->
+    <string name="runningFaceDetection">Please wait\u2026</string>
+    <!-- Toast/alert that the image is being saved to the SD card -->
+    <string name="savingImage">Saving picture\u2026</string>
+    <!-- Toast/alert after saving wallpaper -->
+    <string name="wallpaper">Setting wallpaper\u2026</string>
+
+    <string name="ellipsis">…</string>
+    <string name="unread_cnt_more_than_99">···</string>
+    <string name="male">♂</string>
+    <string name="female">♀</string>
+    <string name="title_activity_t">TActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    
+    <string name="copy">Copy</string>
+    <string name="paste">Paste</string>
+    <string name="delete">Delete</string>
+    <string name="forward">Forward</string>
+    <string name="revoke">Revoke</string>
+
+    <string name="me">Me</string>
+</resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/conv_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="?android:attr/selectableItemBackground">
+    <!-- android:background="@drawable/personal_list_item_selector" > -->
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+	        <LinearLayout 
+	            android:layout_width="48dp"
+	        	android:layout_height="48dp"
+	        	android:orientation="vertical"
+	        	android:layout_marginLeft="8dp"
+        		android:layout_marginRight="8dp"
+	        	android:layout_gravity="center_vertical">
+		        <ImageView 
+		            android:id="@+id/conv_list_portrait"
+		            android:layout_width="match_parent"
+		    		android:layout_height="match_parent"
+		    		android:layout_gravity="center"
+		    		android:contentDescription="Header">
+		        </ImageView>
+
+	        </LinearLayout>
+	        
+	        <!-- <View style="@style/rosterListDivider" /> -->
+	        
+	        <LinearLayout 
+	        	android:layout_height="match_parent"
+	        	android:layout_width="0dp"
+	        	android:layout_weight="1"
+	        	android:gravity="left"
+	        	android:orientation="vertical"
+	        	android:layout_marginLeft="8dp"
+        		android:layout_marginRight="8dp">
+	            <TextView 
+	                android:id="@+id/conv_list_name"
+	                android:layout_width="match_parent"
+	        		android:layout_height="wrap_content"
+	        		android:layout_gravity="top"
+	        		android:layout_marginTop="8dp"
+	        		android:textColor="@color/black"
+	        		android:singleLine="true"
+					android:ellipsize="marquee"
+					android:marqueeRepeatLimit="marquee_forever"/>
+	            <TextView 
+	                android:id="@+id/conv_list_snippet"
+	                android:layout_width="match_parent"
+	        		android:layout_height="wrap_content"
+	        		android:layout_gravity="bottom"
+	        		android:textColor="@color/gray"
+	        		android:singleLine="true"
+					android:ellipsize="marquee"
+					android:marqueeRepeatLimit="marquee_forever" />
+	        </LinearLayout>
+	        
+	        <LinearLayout 
+	        	android:layout_width="wrap_content"
+	        	android:layout_height="match_parent"
+	        	android:orientation="vertical"
+	        	android:layout_gravity="right"
+        		android:layout_marginRight="8dp">
+	            <TextView 
+	                android:id="@+id/conv_list_date"
+	                android:layout_width="wrap_content"
+	        		android:layout_height="wrap_content"
+	        		android:layout_marginTop="8dp"
+
+	        		android:textColor="@color/gray"/>
+	            <ImageView 
+	                android:id="@+id/conv_list_icon"
+	                android:layout_width="20dp"
+	        		android:layout_height="20dp"
+	        		android:layout_gravity="bottom|right"
+	        		android:layout_marginRight="8dp"/>
+	        </LinearLayout>
+	 </LinearLayout>
+</RelativeLayout>
