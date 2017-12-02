@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +27,7 @@ public class RostListPyAdapter extends BaseAdapter implements SectionIndexer,
 PinnedHeaderAdapter, OnScrollListener {
     private static final String TAG = RostListPyAdapter.class.getSimpleName();
 
+    private Context mContext;
     private ArrayList<RostEntry> mRostList = null;
     private LayoutInflater mInflater = null;
     private int mResId = 0;
@@ -48,6 +51,7 @@ PinnedHeaderAdapter, OnScrollListener {
             ArrayList<RostEntry> list, List<String> headers,
             List<Integer> headerPostions) {
         // TODO Auto-generated constructor stub
+        mContext = context;
         mHeaders = headers;
         mHeaderPositions = headerPostions;
         mResId = resource;
@@ -102,7 +106,8 @@ PinnedHeaderAdapter, OnScrollListener {
             tvName.setText(name);
         else
             tvName.setText(R.string.nul);
-        
+
+        //convertView.setOnLongClickListener(new OnRostLongClick(pos));
         Log.v(TAG, "RostListPyAdapter.getView(), name="+name);
         return convertView;
     }
@@ -175,5 +180,40 @@ PinnedHeaderAdapter, OnScrollListener {
         }
         int index = Arrays.binarySearch(mHeaderPositions.toArray(), position);
         return index >= 0 ? index : -index - 2;
+    }
+
+
+    private class OnRostLongClick implements View.OnLongClickListener {
+        private int mListPos;
+        public OnRostLongClick(int pos) {
+            mListPos = pos;
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            Log.v(TAG, "OnRostLongClick.[item].cmvh.tvMsg..onLongClick(), "+v);
+//                bListItemLongPressed = true;
+//                final CharSequence msg = ((TextView)v).getText();
+
+            AlertDialog ops = new AlertDialog.Builder(mContext)//, R.style.AppTheme_OptionDialog)
+                    .setItems(R.array.rost_msg_options, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Log.v(TAG, "AlertDialog..onClick(), " + which);
+                            switch (which) {
+                                case 0: //Delete
+                                    break;
+                            }
+                        }
+                    }).show();
+            ops.getListView().setDivider(mContext.getResources().getDrawable(R.drawable.line));
+            //ops.getListView().setDividerHeight(2); //Set in drawable/line.xml
+            ops.getListView().setPadding(0, 0, 0, 0);
+            //View parent = (View)ops.getListView().getParent().getParent().getParent();
+            //ViewGroup.LayoutParams params = parent.getLayoutParams();
+            //parent.setPadding(20, 0, 50, 0);
+
+            return true;
+        }
     }
 }

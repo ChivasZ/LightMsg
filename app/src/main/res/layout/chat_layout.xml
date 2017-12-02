@@ -3,72 +3,77 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f0f0e0" >
+    android:background="#f0f0e0">
+
     <RelativeLayout
-	    android:id="@+id/top" 
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentTop="true"
-	    android:background="@drawable/btn_default_normal_holo_dark" >
-	    <ImageButton 
-            android:id="@+id/back"
-            android:src="@drawable/back"
-            android:scaleType="centerCrop"
-            android:contentDescription="Back"
-            android:background="@drawable/btn_chat_topbar"
-            android:layout_width="32dip"
-            android:layout_height="32dip" />
-		<ImageView
-			android:id="@+id/hint"
-            android:src="@drawable/hint_ball"
-            android:layout_centerVertical="true"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/back"
-            android:visibility="invisible"/>
-	    <TextView 
-	        android:id="@+id/name" 
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="Chat with.."
-	        android:layout_centerInParent="true"
-	        android:textSize="18sp"
-            android:textColor="#ffffff" />
-	    <ImageButton 
-	        android:id="@+id/self" 
-	        android:src="@drawable/icon_selfinfo"
-	        android:scaleType="centerCrop"
-	        android:layout_centerVertical="true"
-	        android:layout_alignParentRight="true"
-	        android:contentDescription="Group information"
-            android:background="@drawable/btn_chat_topbar"
-            android:layout_width="32dip"
-            android:layout_height="32dip" />
-	</RelativeLayout>
-	
-    <LinearLayout
-        android:id="@+id/bottom"
+        android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        style="@style/ChatBottomArea" >"
-		<include
-	            android:layout_width="match_parent"
-	            android:layout_height="wrap_content"
-	            layout="@layout/chat_layout_custom_footer" />
-	</LinearLayout>
-	
+        android:layout_alignParentTop="true"
+        android:background="@drawable/btn_default_normal_holo_dark">
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="32dip"
+            android:layout_height="32dip"
+            android:background="@drawable/btn_chat_topbar"
+            android:contentDescription="Back"
+            android:scaleType="centerCrop"
+            android:src="@drawable/back"/>
+
+        <ImageView
+            android:id="@+id/hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/back"
+            android:src="@drawable/hint_ball"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Chat with.."
+            android:textColor="#ffffff"
+            android:textSize="18sp"/>
+
+        <ImageButton
+            android:id="@+id/self"
+            android:layout_width="32dip"
+            android:layout_height="32dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_chat_topbar"
+            android:contentDescription="Group information"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_selfinfo"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom"
+        style="@style/ChatBottomArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <include
+            layout="@layout/chat_layout_custom_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
     <ListView
-    	android:id="@+id/listview"
-    	android:layout_below="@id/top"
-    	android:layout_above="@id/bottom"
-    	android:layout_width="match_parent"
-    	android:layout_height="match_parent"
-    	android:layout_marginLeft="2dp" 
-		android:layout_marginRight="2dp"
-    	android:divider="@null"
-    	android:dividerHeight="5dp"
-    	android:scrollbars="none"
-    	android:cacheColorHint="#00000000"
-    	android:overScrollMode="ifContentScrolls" />
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom"
+        android:layout_below="@id/top"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="5dp"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollbars="none"/>
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.lightmsg.activity.msgdesign.chat;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -9,8 +10,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -24,12 +28,15 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Display;
+import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
@@ -647,31 +654,31 @@ public class ChatThread extends AppCompatActivity {
                 
                 Rect rect = new Rect();
                 content.getWindowVisibleDisplayFrame(rect);
-                int height = content.getRootView().getHeight() - rect.bottom;
+                Log.w(TAG, "onGlobalLayout(), content.getRootView().getHeight()="+content.getRootView().getHeight()+", rect.bottom="+rect.bottom);
+                int height = content.getRootView().getHeight() - rect.bottom - getNavigationBarHeight(ChatThread.this);
 
-                Log.v(TAG, "onGlobalLayout(), height="+height+", bCollapse="+bCollapse);
-                
+                Log.w(TAG, "onGlobalLayout(), height="+height+", bCollapse="+bCollapse);
                 if (height == 0) { // To collapse
                     if (!bCollapse) {
-                        Log.v(TAG, "onGlobalLayout(), keyboard collapsed");
+                        Log.w(TAG, "onGlobalLayout(), keyboard collapsed");
                         olcn.collapse();
                         bCollapse = true;
 
                         scrollToBottom();
                     } else {
-                        Log.v(TAG, "onGlobalLayout(), already collapsed, ignore");
+                        Log.w(TAG, "onGlobalLayout(), already collapsed, ignore");
                         //bCollapse = false;
                     }
                     //scrollToBottom();
                 } else { // To expand
                     int orient = app.getResources().getConfiguration().orientation;
                     if (orient == Configuration.ORIENTATION_LANDSCAPE) {
-                        Log.v(TAG, "onGlobalLayout(), ORIENTATION_LANDSCAPE, ignore, " + orient);
+                        Log.w(TAG, "onGlobalLayout(), ORIENTATION_LANDSCAPE, ignore, " + orient);
                         return;
                     }
                     
                     if (height != keyboardHeight) {
-                        Log.v(TAG, "onGlobalLayout(), keyboard height changed:" + height);
+                        Log.w(TAG, "onGlobalLayout(), keyboard height changed:" + height);
                         keyboardHeight = height;
 
                         SharedPreferences sp = getSharedPreferences("keyboard_height", Context.MODE_PRIVATE);
@@ -679,16 +686,16 @@ public class ChatThread extends AppCompatActivity {
                         editor.putInt("keyboardHeight", height);
                         editor.commit();
 
-                        Log.v(TAG, "onGlobalLayout(), keyboard expanded");
+                        Log.w(TAG, "onGlobalLayout(), keyboard expanded");
                         olcn.expand(height, true);
                         bCollapse = false;
 
                         scrollToBottom();
                     } else {
-                        Log.v(TAG, "onGlobalLayout(), keyboard height not change:" + height);
+                        Log.w(TAG, "onGlobalLayout(), keyboard height not change:" + height);
 
                         if (bCollapse) {
-                            Log.v(TAG, "onGlobalLayout(), keyboard expanded");
+                            Log.w(TAG, "onGlobalLayout(), keyboard expanded");
                             olcn.expand(height, false);
                             bCollapse = false;
 
@@ -699,6 +706,43 @@ public class ChatThread extends AppCompatActivity {
             }
         });
     }
+    
+    //Fix NavigationBar Start
+    public boolean isNavigationBarShow(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            Display display = getWindowManager().getDefaultDisplay();
+            Point size = new Point();
+            Point realSize = new Point();
+            display.getSize(size);
+            display.getRealSize(realSize);
+            return realSize.y!=size.y;
+        }else {
+            boolean menu = ViewConfiguration.get(this).hasPermanentMenuKey();
+            boolean back = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
+            if(menu || back) {
+                return false;
+            }else {
+                return true;
+            }
+        }
+    }
+
+    public int getNavigationBarHeight(Activity activity) {
+        if (!isNavigationBarShow()){
+            return 0;
+        }
+        Resources resources = activity.getResources();
+        int resourceId = resources.getIdentifier("navigation_bar_height",
+                "dimen", "android");
+        //获取NavigationBar的高度
+        int height = resources.getDimensionPixelSize(resourceId);
+        return height;
+    }
+
+    public int getSceenHeight(Activity activity) {
+        return activity.getWindowManager().getDefaultDisplay().getHeight()+getNavigationBarHeight(activity);
+    }
+    //Fix NavigationBar End
 
     private int keyboardHeight;
     public int getBottomHeight() {

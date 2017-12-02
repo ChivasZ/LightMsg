@@ -36,9 +36,9 @@ public final class NotificationServiceReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d(TAG, "NotificationServiceReceiver.onReceive()...");
+        Log.w(TAG, "NotificationServiceReceiver.onReceive()...");
         String action = intent.getAction();
-        Log.d(TAG, "action=" + action);
+        Log.w(TAG, "action=" + action);
 
         if (NotificationService.ACTION_SHOW_NOTIFICATION.equals(action)) {
             String notificationId = intent
@@ -52,14 +52,15 @@ public final class NotificationServiceReceiver extends BroadcastReceiver {
             String notificationUri = intent
                     .getStringExtra(NotificationService.NOTIFICATION_URI);
 
-            Log.d(TAG, "notificationId=" + notificationId);
-            Log.d(TAG, "notificationApiKey=" + notificationApiKey);
-            Log.d(TAG, "notificationTitle=" + notificationTitle);
-            Log.d(TAG, "notificationMessage=" + notificationMessage);
-            Log.d(TAG, "notificationUri=" + notificationUri);
+            Log.w(TAG, "notificationId=" + notificationId);
+            Log.w(TAG, "notificationApiKey=" + notificationApiKey);
+            Log.w(TAG, "notificationTitle=" + notificationTitle);
+            Log.w(TAG, "notificationMessage=" + notificationMessage);
+            Log.w(TAG, "notificationUri=" + notificationUri);
 
-            //ns.notify(notificationId, notificationApiKey,
-            //		notificationTitle, notificationMessage, notificationUri);
+            ns.applyNotification(notificationTitle, notificationMessage);
+//            ns.notify(notificationId, notificationApiKey,
+//                    notificationTitle, notificationMessage, notificationUri);
         }
     }
 

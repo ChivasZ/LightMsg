@@ -1,17 +1,18 @@
 package com.lightmsg.activity.msgdesign.conv;
 
-import java.util.ArrayList;
-
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.BroadcastReceiver;
+import android.content.ClipData;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.text.SpannableString;
 import android.util.Log;
 import android.util.TypedValue;
@@ -31,17 +32,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lightmsg.BadgeView;
-import com.lightmsg.R;
 import com.lightmsg.LightMsg;
+import com.lightmsg.R;
+import com.lightmsg.activity.ChatMsgEntry;
+import com.lightmsg.activity.ConvEntry;
 import com.lightmsg.activity.msgdesign.LightMsgActivity;
 import com.lightmsg.activity.msgdesign.chat.ChatFragment;
 import com.lightmsg.activity.msgdesign.chat.ChatThread;
-import com.lightmsg.activity.ConvEntry;
 import com.lightmsg.service.CoreService;
 import com.lightmsg.util.EmojiUtil;
 import com.lightmsg.util.Locator;
 
-public class ConverFragment extends ListFragment implements OnItemClickListener, OnItemLongClickListener, OnGestureListener  {
+import java.util.ArrayList;
+
+public class ConverFragment extends ListFragment implements OnItemClickListener, OnItemLongClickListener, OnGestureListener {
     private static final String TAG = "LightMsg/" + ConverFragment.class.getSimpleName();
     private LightMsg app = null;
     protected CoreService xs = null;
@@ -54,9 +58,9 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
 
     private MessageReceiver messageReceiver = null;
     private IntentFilter messageFilter = null;
-    
+
     private TextView empty;
-    
+
     protected boolean isGroup = false;
     protected String mCurrentGroup = "";
     protected String mCurrentName = "";
@@ -66,8 +70,8 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
     public void onCreate(Bundle savedInstanceState) {
         Log.v(TAG, "onCreate()...");
         super.onCreate(savedInstanceState);
-        activity = (LightMsgActivity)getActivity();
-        app = (LightMsg)activity.getApplication();
+        activity = (LightMsgActivity) getActivity();
+        app = (LightMsg) activity.getApplication();
         xs = app.xs;
 
         try {
@@ -79,7 +83,7 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
             e.printStackTrace();
         }
     }
-    
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -87,18 +91,18 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
         View view = inflater.inflate(R.layout.conversation, container, false);
         return view;
     }
-    
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         Log.v(TAG, "onActivityCreated()...");
         super.onActivityCreated(savedInstanceState);
-        
+
         lvConversation = getListView();
         lvConversation.setOnItemClickListener(this);
         lvConversation.setOnItemLongClickListener(this);
 
         if (!isGroup) {
-            Log.v(TAG, "onActivityCreated(), xs="+xs);
+            Log.v(TAG, "onActivityCreated(), xs=" + xs);
             mConvList = xs.getConvArrayList(this.getActivity().getApplicationContext());
         } else {
             mConvList = xs.getGroupConvArrayList(this.getActivity().getApplicationContext());
@@ -107,7 +111,7 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
 
         lvConversation.setAdapter(adapter);
         registerReceiver();
-        
+
         empty = (TextView) getView().findViewById(R.id.empty);
         if (mConvList.size() == 0) {
             empty.setVisibility(View.VISIBLE);
@@ -149,7 +153,7 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
     private class MessageReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.v(TAG, "onReceive()... "+intent.getAction());
+            Log.v(TAG, "onReceive()... " + intent.getAction());
             if (CoreService.ACTION_RECEIVE_NEW_MSG.equals(intent.getAction())) {
                 Log.v(TAG, "onReceive(), >>ACTION_RECEIVE_NEW_MSG");
                 //Fetch data when fresh...
@@ -169,7 +173,7 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
                 }
                 adapter.notifyDataSetChanged();
             }
-            
+
             if (mConvList.size() == 0) {
                 empty.setVisibility(View.VISIBLE);
             } else {
@@ -196,7 +200,7 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
     }
 
     class ConvListAdapter extends ArrayAdapter<ConvEntry> {
-
+        private Context mContext;
         private LayoutInflater mInflater = null;
         private int mResId = 0;
         private Resources mRes;
@@ -205,37 +209,38 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
 
         public ConvListAdapter(Context context, int resource, ArrayList<ConvEntry> list) {
             super(context, resource, list);
+            mContext = context;
             mResId = resource;
             mRes = context.getResources();
             mBadgeSize = mRes.getDimensionPixelSize(R.dimen.unread_cnt_ball_size);
             mBadgeTextSize = mRes.getDimension(R.dimen.unread_cnt_text_size);
-            mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
-        
+
         @Override
         public int getCount() {
             //Log.v(TAG, "ConvListAdapter.getCount()...mConvList.size()="+mConvList.size());
             return mConvList.size();
         }
- 
+
         @Override
         public ConvEntry getItem(int pos) {
             //Log.v(TAG, "ConvListAdapter.getItem()... pos="+pos);
             return mConvList.get(pos);
         }
- 
+
         @Override
         public long getItemId(int pos) {
             //Log.v(TAG, "ConvListAdapter.getItemId()... pos="+pos);
             return pos;
         }
-        
+
         @Override
         public int getItemViewType(int pos) {
             //Log.v(TAG, "####ConvListAdapter.getItemViewType()... pos="+pos);
-            return 0;	
+            return 0;
         }
-        
+
         @Override
         public int getViewTypeCount() {
             //Log.v(TAG, "####ConvListAdapter.getViewTypeCount()...");
@@ -246,37 +251,37 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
         public View getView(int pos, View convertView, ViewGroup parent) {
             //Log.v(TAG, "ConvListAdapter.getView()... pos="+pos);
             RelativeLayout v;
-            
+
             ListItemViewHolder livh;
             if (convertView == null) {
-                v = (RelativeLayout)mInflater.inflate(mResId, parent, false);
+                v = (RelativeLayout) mInflater.inflate(mResId, parent, false);
                 livh = new ListItemViewHolder();
                 v.setTag(livh);
             } else {
-                v = (RelativeLayout)convertView;
-                livh = (ListItemViewHolder)v.getTag();
+                v = (RelativeLayout) convertView;
+                livh = (ListItemViewHolder) v.getTag();
             }
 
-            ImageView portrait = (ImageView)v.findViewById(R.id.conv_list_portrait);
+            ImageView portrait = (ImageView) v.findViewById(R.id.conv_list_portrait);
             portrait.setImageResource(R.drawable.portrait_thumbnail_img_03);
             livh.ivPortrait = portrait;
-            
+
             //Set unread count on each conversation item.
             int unreadCount = mConvList.get(pos).getUnreadCount();
             BadgeView bv;
             if (livh.bv == null) {
                 Context context = ConverFragment.this.getActivity().getApplicationContext();
-                bv = new BadgeView(context, (View)portrait);
+                bv = new BadgeView(context, (View) portrait);
                 bv.setBadgeMargin(0);
                 bv.setHeight(mBadgeSize);
                 bv.setWidth(mBadgeSize);
                 bv.setTextSize(TypedValue.COMPLEX_UNIT_PX, mBadgeTextSize);
                 bv.setGravity(Gravity.CENTER);
                 bv.setMaxLines(1);
-                
+
                 livh.bv = bv;
             } else {
-                livh = (ListItemViewHolder)v.getTag();
+                livh = (ListItemViewHolder) v.getTag();
                 bv = livh.bv;
             }
             if (bv != null) {
@@ -301,7 +306,7 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
             }
 
             String name = mConvList.get(pos).getName();
-            TextView tvName = (TextView)v.findViewById(R.id.conv_list_name);
+            TextView tvName = (TextView) v.findViewById(R.id.conv_list_name);
             if (name != null && !name.isEmpty())
                 tvName.setText(name);
             else
@@ -312,7 +317,7 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
             String snippet = mConvList.get(pos).getSnippet();
             EmojiUtil.getInstance().setImageSizeSmall();
             SpannableString spannableString = EmojiUtil.getInstance().getExpressionString(ConverFragment.this.getActivity().getApplicationContext(), snippet);
-            TextView tvSnippet = (TextView)v.findViewById(R.id.conv_list_snippet);
+            TextView tvSnippet = (TextView) v.findViewById(R.id.conv_list_snippet);
             if (snippet != null && !snippet.isEmpty())
                 tvSnippet.setText(spannableString);
             else
@@ -321,7 +326,7 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
             livh.tvSnippet = tvSnippet;
 
             String date = mConvList.get(pos).getDate();
-            TextView tvDate = (TextView)v.findViewById(R.id.conv_list_date);
+            TextView tvDate = (TextView) v.findViewById(R.id.conv_list_date);
             if (date != null && !date.isEmpty())
                 tvDate.setText(date);
             else
@@ -331,21 +336,58 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
 
             //Check messages state in the thread.
             Boolean error = mConvList.get(pos).getError();
-            ImageView icon = (ImageView)v.findViewById(R.id.conv_list_icon);
+            ImageView icon = (ImageView) v.findViewById(R.id.conv_list_icon);
             if (error) {
                 icon.setImageResource(R.drawable.msg_state_failed);
             } else {
                 icon.setVisibility(View.GONE);
             }
             livh.ivIcon = icon;
-            
+
             livh.user = mConvList.get(pos).getUser();
             livh.name = mConvList.get(pos).getName();
-            
+
+            //v.setOnLongClickListener(new OnConvLongClick(pos));
             return v;
         }
+
+        private class OnConvLongClick implements View.OnLongClickListener {
+            private int mListPos;
+            public OnConvLongClick(int pos) {
+                mListPos = pos;
+            }
+
+            @Override
+            public boolean onLongClick(View v) {
+                Log.v(TAG, "ConvListAdapter.[item].cmvh.tvMsg..onLongClick(), "+v);
+//                bListItemLongPressed = true;
+//                final CharSequence msg = ((TextView)v).getText();
+
+                AlertDialog ops = new AlertDialog.Builder(mContext)//, R.style.AppTheme_OptionDialog)
+                        .setItems(R.array.conv_msg_options, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.v(TAG, "AlertDialog..onClick(), " + which);
+                                switch (which) {
+                                    case 0: //Copy
+                                        break;
+                                    case 1: //Delete
+                                        break;
+                                }
+                            }
+                        }).show();
+                ops.getListView().setDivider(mContext.getResources().getDrawable(R.drawable.line));
+                //ops.getListView().setDividerHeight(2); //Set in drawable/line.xml
+                ops.getListView().setPadding(0, 0, 0, 0);
+                //View parent = (View)ops.getListView().getParent().getParent().getParent();
+                //ViewGroup.LayoutParams params = parent.getLayoutParams();
+                //parent.setPadding(20, 0, 50, 0);
+
+                return true;
+            }
+        }
     }
-    
+
     private static class ListItemViewHolder {
         public TextView tvName;
         public TextView tvSnippet;
@@ -355,7 +397,7 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
         public BadgeView bv;
         public String user;
         public String name;
-        
+
         public ListItemViewHolder() {
             tvName = null;
             tvSnippet = null;
@@ -369,54 +411,54 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
 
     @Override
     public boolean onDown(MotionEvent arg0) {
-        Log.v(TAG, "onDown()...ME="+arg0);
+        Log.v(TAG, "onDown()...ME=" + arg0);
         return false;
     }
 
     @Override
     public boolean onFling(MotionEvent arg0, MotionEvent arg1, float arg2,
-            float arg3) {
-        Log.v(TAG, "onFling()...ME="+arg0);
+                           float arg3) {
+        Log.v(TAG, "onFling()...ME=" + arg0);
         return false;
     }
 
     @Override
     public void onLongPress(MotionEvent arg0) {
-        Log.v(TAG, "onLongPress()...ME="+arg0);
+        Log.v(TAG, "onLongPress()...ME=" + arg0);
     }
 
     @Override
     public boolean onScroll(MotionEvent arg0, MotionEvent arg1, float arg2,
-            float arg3) {
-        Log.v(TAG, "onScroll()...ME1="+arg0+", ME2="+arg1);
+                            float arg3) {
+        Log.v(TAG, "onScroll()...ME1=" + arg0 + ", ME2=" + arg1);
         return false;
     }
 
     @Override
     public void onShowPress(MotionEvent arg0) {
-        Log.v(TAG, "onShowPress()...ME="+arg0);
+        Log.v(TAG, "onShowPress()...ME=" + arg0);
 
     }
 
     @Override
     public boolean onSingleTapUp(MotionEvent arg0) {
-        Log.v(TAG, "onSingleTapUp()...ME="+arg0);
+        Log.v(TAG, "onSingleTapUp()...ME=" + arg0);
         return false;
     }
 
     @Override
     public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2,
-            long arg3) {
-        Log.v(TAG, "onItemLongClick()...AV="+arg0+", v="+arg1+", "+arg2+", "+arg3);
+                                   long arg3) {
+        Log.v(TAG, "onItemLongClick()...AV=" + arg0 + ", v=" + arg1 + ", " + arg2 + ", " + arg3);
         return false;
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
-        Log.v(TAG, "onItemClick()...AV="+parent+", v="+v+", "+pos+", "+id);
+        Log.v(TAG, "onItemClick()...AV=" + parent + ", v=" + v + ", " + pos + ", " + id);
         ListItemViewHolder livh;
-        livh = (ListItemViewHolder)v.getTag();
-        
+        livh = (ListItemViewHolder) v.getTag();
+
         if (isGroup) {
             //startChatInRoom(livh.user, livh.name);
             startChatInRoomByFragment(livh.user, livh.name);
@@ -424,42 +466,42 @@ public class ConverFragment extends ListFragment implements OnItemClickListener,
             startChatWith(livh.user, livh.name);
         }
     }
-    
+
     protected void startChatInRoom(String room, String name) {
-        Log.v(TAG, "startChatInRoom()... room="+room);
-        
+        Log.v(TAG, "startChatInRoom()... room=" + room);
+
         Intent intent = new Intent();
         intent.setClass(ConverFragment.this.getActivity(), ChatThread.class);
         intent.putExtra("group", room);
         intent.putExtra("group_name", name);
-        
+
         startActivity(intent);
     }
-    
+
     protected void startChatInRoomByFragment(String room, String name) {
-        Log.v(TAG, "startChatInRoomInFragment()... room="+room);
-        
+        Log.v(TAG, "startChatInRoomInFragment()... room=" + room);
+
         FragmentManager fragManager = getFragmentManager();
         FragmentTransaction fragTransaction = fragManager.beginTransaction();
-        
+
         Bundle bundle = new Bundle();
         bundle.putString("group", room);
         bundle.putString("group_name", name);
         Fragment frag = new ChatFragment();
         frag.setArguments(bundle);
-        
+
         fragTransaction.replace(R.id.tab3, frag, "chat_fragment");
         fragTransaction.commit();
     }
-    
+
     protected void startChatWith(String user, String name) {
-        Log.v(TAG, "startChatWith()... user="+user);
-        
+        Log.v(TAG, "startChatWith()... user=" + user);
+
         Intent intent = new Intent();
         intent.setClass(ConverFragment.this.getActivity(), ChatThread.class);
         intent.putExtra("user", user);
         intent.putExtra("name", name);
-        
+
         startActivity(intent);
         
         /*FragmentManager fragManager = getFragmentManager();

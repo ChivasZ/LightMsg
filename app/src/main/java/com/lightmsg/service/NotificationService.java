@@ -15,7 +15,9 @@
  */
 package com.lightmsg.service;
 
+import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -24,15 +26,21 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.lightmsg.R;
+import com.lightmsg.activity.msgdesign.chat.ChatThread;
 
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
+
+import static com.lightmsg.service.MessageReceiveService.setBadge;
+import static org.jivesoftware.smack.packet.PrivacyItem.Type.group;
 
 /**
  * Service that continues to run in background and respond to the push 
@@ -295,4 +303,51 @@ public class NotificationService extends Service {
         return sharedPrefs.getBoolean(NotificationService.SETTINGS_VIBRATE_ENABLED, true);
     }
 
+
+    public void applyNotification(String title, String content) {
+        /*
+         * Set Status Bar Notification.
+         */
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setContentTitle(title)
+                        .setContentText(content);
+        // Creates an explicit intent for an Activity in your app
+        Intent resultIntent = new Intent();
+        resultIntent.setClass(this, ChatThread.class);
+
+        // The stack builder object will contain an artificial back stack for the
+        // started Activity.
+        // This ensures that navigating backward from the Activity leads out of
+        // your application to the Home screen.
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        // Adds the back stack for the Intent (but not the Intent itself)
+        stackBuilder.addParentStack(ChatThread.class); //Parent is LightMsgActivity.class set@Manifest.xml
+        // Adds the Intent that starts the Activity to the top of the stack
+        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(
+                        0,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+
+        mBuilder.setContentIntent(resultPendingIntent);
+        mBuilder.setAutoCancel(true);
+//        mBuilder.setNumber(count);
+        int defaults = 0;
+        defaults |= Notification.DEFAULT_SOUND;
+        defaults |= Notification.DEFAULT_VIBRATE;
+        //defaults |= Notification.DEFAULT_LIGHTS;
+        mBuilder.setDefaults(defaults);
+        mBuilder.setLights(getResources().getColor(R.color.deepskyblue),
+                1500,
+                1500);
+
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        // mId allows you to update the notification later on.
+        int mId = CoreService.NOTIFICATION_MESSAGE_ID;
+        mNotificationManager.notify(mId, mBuilder.build());
+    }
 }

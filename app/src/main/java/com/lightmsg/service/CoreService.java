@@ -1614,7 +1614,7 @@ public class CoreService extends Service {
             e.printStackTrace();
         }
 
-        //startNotificationService();
+        startNotificationService();
 
         XmppServiceReceiver.registerConnectionStateChange(this, this);
 
@@ -1647,7 +1647,8 @@ public class CoreService extends Service {
         Thread serviceThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                Intent intent = NotificationService.getIntent();
+                //Intent intent = NotificationService.getIntent();
+                Intent intent = new Intent(CoreService.this, NotificationService.class);
                 CoreService.this.startService(intent);
             }
         });

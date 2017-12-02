@@ -122,5 +122,7 @@
     <string name="forward">Forward</string>
     <string name="revoke">Revoke</string>
 
+    <string name="setTop">Set as top</string>
+
     <string name="me">Me</string>
 </resources>

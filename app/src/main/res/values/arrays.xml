@@ -16,6 +16,15 @@
         <item>@string/revoke</item>
         <item>@string/delete</item>
     </string-array>
+
+    <string-array name="conv_msg_options">
+        <item>@string/setTop</item>
+        <item>@string/delete</item>
+    </string-array>
+
+    <string-array name="rost_msg_options">
+        <item>@string/delete</item>
+    </string-array>
     
     <string-array name="emoji_file">
         <item>emoji_360</item>
